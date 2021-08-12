@@ -1,37 +1,38 @@
-## Welcome to GitHub Pages
+## CAF
 
-You can use the [editor on GitHub](https://github.com/Ryujinz/CAF/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+How to merge a newer CAF tag in an android kernel
 
 ```markdown
-Syntax highlighted code block
+First go here:
 
-# Header 1
-## Header 2
-### Header 3
+        https://wiki.codeaurora.org/xwiki/bin/QAEP/release
 
-- Bulleted
-- List
+This site gives information about all msm soc release details with tag + android version
 
-1. Numbered
-2. List
+Search your msm here.. Check the latest one and look for correct android version and mark that tag.
 
-**Bold** and _Italic_ and `Code` text
+Now open one of the following links (dependent on your linux kernel version)
 
-[Link](url) and ![Image](src)
+3.10: https://source.codeaurora.org/quic/la/kernel/msm-3.10/
+3.18: https://source.codeaurora.org/quic/la/kernel/msm-3.18/
+4.4: https://source.codeaurora.org/quic/la/kernel/msm-4.4/
+
+Choose the right one and copy it, now go into your kernel folder with a terminal and do
+
+    git fetch <repo link> <tag>
+
+example: 
+
+    git fetch https://source.codeaurora.org/quic/la/kernel/msm-3.18/ LA.UM.5.5.r1-05300-8x96.0 
+
+Then to do the merge you just have to do
+
+    git merge FETCH_HEAD
+
+Now just fix the conflicts if there and then do
+
+    git add -A
+    git merge --continue
+    
+Congratulation, you have (probably) succesfully merged a new caf tag.
 ```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Ryujinz/CAF/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
